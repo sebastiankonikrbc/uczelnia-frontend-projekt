@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -9,6 +9,7 @@ import { Theme } from "@radix-ui/themes";
 import { NODE_TYPES_ARRAY, NODE_TYPE } from "./api/types";
 import { FormProvider, useForm } from "react-hook-form";
 import { useGetNodes } from "./api/useGetNodes";
+import { useCreateNode } from "./api/useCreateNode";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,6 +21,17 @@ function App() {
   const selectedNode = methods.watch("node_type", items[0].value);
 
   useGetNodes(selectedNode).then((value) => console.log(value));
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useCreateNode({
+      type: "User",
+      name: "cze",
+      email: "cze@cze.pl",
+      age: 12,
+      address: "czsakjdhaksd",
+    });
+  }, []);
 
   return (
     <Theme>

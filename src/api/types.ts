@@ -80,3 +80,21 @@ export type USER_NODE = {
   age: number;
   address: string;
 } & NODE;
+
+export type USER = Omit<USER_NODE, "node_id">;
+export type TRANSACTION_TYPE = Omit<TRANSACTION_TYPE_NODE, "node_id">;
+export type LOCATION = Omit<LOCATION_NODE, "node_id">;
+export type IP_ADDRESS = Omit<IP_ADDRESS_NODE, "node_id">;
+export type FRAUD_REPORT = Omit<FRAUD_REPORT_NODE, "node_id">;
+export type CREDIT_CARD = Omit<CREDIT_CARD_NODE, "node_id">;
+export type TRANSACTION = Omit<TRANSACTION_NODE, "node_id">;
+
+export type CreateInputType = (
+  | USER
+  | TRANSACTION_TYPE
+  | LOCATION
+  | IP_ADDRESS
+  | FRAUD_REPORT
+  | CREDIT_CARD
+  | TRANSACTION
+) & { type: NODE_TYPE };
