@@ -5,3 +5,4 @@ export const API_CREATE_NODE = `${API_URL}/create_node`;
 export const API_CREATE_RELATIONSHIPS = `${API_URL}/create_relationships`;
 export const API_DELETE_NODE = `${API_URL}/delete_node`;
 export const API_DELETE_RELATIONSHIP = `${API_URL}/delete_relationship`;
+export const API_EDIT_NODE = `${API_URL}/edit_node`;
