@@ -21,6 +21,7 @@ export const RELATIONSHIPS = [
   "HAS_LOCATION",
   "LOCATED_AT",
   "REPORTS_FRAUD",
+  "IS_OF_TYPE",
 ] as const;
 
 export type RELATIONSHIP_TYPES = (typeof RELATIONSHIPS)[number];

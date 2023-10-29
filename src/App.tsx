@@ -9,7 +9,7 @@ import { Theme } from "@radix-ui/themes";
 import { NODE_TYPES_ARRAY, NODE_TYPE } from "./api/types";
 import { FormProvider, useForm } from "react-hook-form";
 import { useGetNodes } from "./api/useGetNodes";
-import { useCreateNode } from "./api/useCreateNode";
+import { useCreateRelationship } from "./api/useCreateRelationship";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,12 +24,20 @@ function App() {
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useCreateNode({
-      type: "User",
-      name: "cze",
-      email: "cze@cze.pl",
-      age: 12,
-      address: "czsakjdhaksd",
+    // useCreateNode({
+    //   type: "User",
+    //   name: "cze",
+    //   email: "cze@cze.pl",
+    //   age: 12,
+    //   address: "czsakjdhaksd",
+    // });
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useCreateRelationship({
+      source_type: "Transaction",
+      source: "75039549-0e7d-46d5-8eda-ecb85ce1e6af",
+      type: "IS_OF_TYPE",
+      target: "2061c67c-9f22-4907-925d-4e84b97b6195",
+      target_type: "TransactionType",
     });
   }, []);
 
