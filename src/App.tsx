@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import "@radix-ui/themes/styles.css";
 
-import { Select } from "./api/components/Select";
+import { Select } from "./components/Select";
 import { Theme } from "@radix-ui/themes";
 import { NODE_TYPES_ARRAY, NODE_TYPE } from "./api/types";
 import { FormProvider, useForm } from "react-hook-form";
@@ -19,7 +19,7 @@ function App() {
   const methods = useForm<{ node_type: NODE_TYPE }>();
   const selectedNode = methods.watch("node_type", items[0].value);
 
-  useGetNodes(selectedNode).then((value) => console.log(value, "values"));
+  useGetNodes(selectedNode).then((value) => console.log(value));
 
   return (
     <Theme>

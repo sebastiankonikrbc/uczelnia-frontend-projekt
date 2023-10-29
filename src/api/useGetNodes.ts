@@ -10,7 +10,7 @@ import {
   USER_NODE,
 } from "./types";
 
-type NODES_TYPES =
+export type NODES_TYPES =
   | TRANSACTION_NODE[]
   | CREDIT_CARD_NODE[]
   | FRAUD_REPORT_NODE[]
@@ -18,6 +18,7 @@ type NODES_TYPES =
   | LOCATION_NODE[]
   | TRANSACTION_TYPE_NODE[]
   | USER_NODE[];
+
 export const useGetNodes = async (
   nodeType: NODE_TYPE
 ): Promise<NODES_TYPES> => {

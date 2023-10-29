@@ -10,13 +10,20 @@ export const NODE_TYPES_ARRAY = [
   "User",
 ] as const;
 
-export type RELATIONSHIP_TYPES =
-  | "BELONGS_TO"
-  | "HAS_CREDIT_CARD"
-  | "HAS_IP_ADDRESS"
-  | "HAS_LOCATION"
-  | "LOCATED_AT"
-  | "REPORTS_FRAUD";
+export type CREATE_NODE_DATA = {
+  type: NODE_TYPE;
+};
+
+export const RELATIONSHIPS = [
+  "BELONGS_TO",
+  "HAS_CREDIT_CARD",
+  "HAS_IP_ADDRESS",
+  "HAS_LOCATION",
+  "LOCATED_AT",
+  "REPORTS_FRAUD",
+] as const;
+
+export type RELATIONSHIP_TYPES = (typeof RELATIONSHIPS)[number];
 
 export type NODE = {
   node_id: string;
@@ -44,7 +51,7 @@ export type FRAUD_REPORT_NODE = {
   relationship: {
     REPORTS_FRAUD: string[];
   };
-} & NODE;
+};
 
 export type IP_ADDRESS_NODE = {
   ip_address: string;
