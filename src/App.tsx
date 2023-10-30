@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -9,7 +9,7 @@ import { Theme } from "@radix-ui/themes";
 import { NODE_TYPES_ARRAY, NODE_TYPE } from "./api/types";
 import { FormProvider, useForm } from "react-hook-form";
 import { useGetNodes } from "./api/useGetNodes";
-import { useCreateRelationship } from "./api/useCreateRelationship";
+import { CreateNodeDialog } from "./elements/CreateNodeDialog";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,24 +22,24 @@ function App() {
 
   useGetNodes(selectedNode).then((value) => console.log(value));
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    // useCreateNode({
-    //   type: "User",
-    //   name: "cze",
-    //   email: "cze@cze.pl",
-    //   age: 12,
-    //   address: "czsakjdhaksd",
-    // });
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useCreateRelationship({
-      source_type: "Transaction",
-      source: "75039549-0e7d-46d5-8eda-ecb85ce1e6af",
-      type: "IS_OF_TYPE",
-      target: "2061c67c-9f22-4907-925d-4e84b97b6195",
-      target_type: "TransactionType",
-    });
-  }, []);
+  // useEffect(() => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  // useCreateNode({
+  //   type: "User",
+  //   name: "cze",
+  //   email: "cze@cze.pl",
+  //   age: 12,
+  //   address: "czsakjdhaksd",
+  // });
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  // useCreateRelationship({
+  //   source_type: "Transaction",
+  //   source: "75039549-0e7d-46d5-8eda-ecb85ce1e6af",
+  //   type: "IS_OF_TYPE",
+  //   target: "2061c67c-9f22-4907-925d-4e84b97b6195",
+  //   target_type: "TransactionType",
+  // });
+  // }, []);
 
   return (
     <Theme>
@@ -72,6 +72,7 @@ function App() {
           }))}
         />
       </FormProvider>
+      <CreateNodeDialog />
     </Theme>
   );
 }
