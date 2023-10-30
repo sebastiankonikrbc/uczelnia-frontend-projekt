@@ -1,14 +1,14 @@
+import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { Button, Flex, Dialog as RadixDialog } from "@radix-ui/themes";
 
 type Props = {
-  triggerTitle: string;
+  triggerTitle?: string;
   title: string;
   description: string;
   children: React.ReactNode;
   onClickSave: () => void;
 };
 export const Dialog = ({
-  triggerTitle,
   title,
   description,
   children,
@@ -17,7 +17,7 @@ export const Dialog = ({
   return (
     <RadixDialog.Root>
       <RadixDialog.Trigger>
-        <Button>{triggerTitle}</Button>
+        <PlusCircledIcon color="green" />
       </RadixDialog.Trigger>
 
       <RadixDialog.Content style={{ maxWidth: 450 }}>

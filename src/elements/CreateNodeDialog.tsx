@@ -19,9 +19,12 @@ import {
   USER,
 } from "../api/types";
 import { useCreateNode } from "../api/useCreateNode";
+import { useContext } from "react";
+import { RefetchContext } from "../RefetchContext";
 
 export const CreateNodeDialogForUser = () => {
   const methods = useForm<USER>();
+  const { setRefetch } = useContext(RefetchContext);
   const onClickSave = async () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -30,6 +33,7 @@ export const CreateNodeDialogForUser = () => {
       { name: "", email: "", age: undefined, address: "" },
       { keepValues: false }
     );
+    setRefetch((prev: number) => prev + 1);
   };
   return (
     <FormProvider {...methods}>
@@ -48,13 +52,14 @@ export const CreateNodeDialogForUser = () => {
 };
 
 export const CreateNodeDialogForTransactionType = () => {
-  //to do
+  const { setRefetch } = useContext(RefetchContext);
   const methods = useForm<TRANSACTION_TYPE>();
   const onClickSave = async () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "TransactionType" });
     methods.reset({ name: "", description: "" }, { keepValues: false });
+    setRefetch((prev: number) => prev + 1);
   };
   return (
     <FormProvider {...methods}>
@@ -73,13 +78,14 @@ export const CreateNodeDialogForTransactionType = () => {
 };
 
 export const CreateNodeDialogForLocation = () => {
-  //to do
+  const { setRefetch } = useContext(RefetchContext);
   const methods = useForm<LOCATION>();
   const onClickSave = async () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "Location" });
     methods.reset({ latitude: 0, longitude: 0 }, { keepValues: false });
+    setRefetch((prev: number) => prev + 1);
   };
   return (
     <FormProvider {...methods}>
@@ -98,13 +104,14 @@ export const CreateNodeDialogForLocation = () => {
 };
 
 export const CreateNodeDialogForIpAddress = () => {
-  //to do
+  const { setRefetch } = useContext(RefetchContext);
   const methods = useForm<IP_ADDRESS>();
   const onClickSave = async () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "IPAddress" });
     methods.reset({ ip_address: "" }, { keepValues: false });
+    setRefetch((prev: number) => prev + 1);
   };
   return (
     <FormProvider {...methods}>
@@ -122,13 +129,14 @@ export const CreateNodeDialogForIpAddress = () => {
   );
 };
 export const CreateNodeDialogForFraudReport = () => {
-  //to do
+  const { setRefetch } = useContext(RefetchContext);
   const methods = useForm<FRAUD_REPORT>();
   const onClickSave = async () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "FraudReport" });
     methods.reset({ description: "" }, { keepValues: false });
+    setRefetch((prev: number) => prev + 1);
   };
   return (
     <FormProvider {...methods}>
@@ -147,7 +155,7 @@ export const CreateNodeDialogForFraudReport = () => {
 };
 
 export const CreateNodeDialogForCreditCard = () => {
-  //to do
+  const { setRefetch } = useContext(RefetchContext);
   const methods = useForm<CREDIT_CARD>();
   const onClickSave = async () => {
     const value = methods.getValues();
@@ -157,6 +165,7 @@ export const CreateNodeDialogForCreditCard = () => {
       { card_number: "", expiration_date: "", cvv: "string" },
       { keepValues: false }
     );
+    setRefetch((prev: number) => prev + 1);
   };
   return (
     <FormProvider {...methods}>
@@ -175,13 +184,14 @@ export const CreateNodeDialogForCreditCard = () => {
 };
 
 export const CreateNodeDialogForTransaction = () => {
-  //to do
+  const { setRefetch } = useContext(RefetchContext);
   const methods = useForm<TRANSACTION>();
   const onClickSave = async () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "Transaction" });
     methods.reset({ amount: 0, timestamp: "" }, { keepValues: false });
+    setRefetch((prev: number) => prev + 1);
   };
   return (
     <FormProvider {...methods}>
