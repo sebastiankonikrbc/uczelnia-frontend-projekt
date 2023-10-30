@@ -8,7 +8,6 @@ import { Select } from "./components/Select";
 import { Flex, Theme } from "@radix-ui/themes";
 import { NODE_TYPES_ARRAY, NODE_TYPE } from "./api/types";
 import { FormProvider, useForm } from "react-hook-form";
-import { useGetNodes } from "./api/useGetNodes";
 import {
   CreateNodeDialogForCreditCard,
   CreateNodeDialogForFraudReport,
@@ -18,6 +17,7 @@ import {
   CreateNodeDialogForTransactionType,
   CreateNodeDialogForUser,
 } from "./elements/CreateNodeDialog";
+import { NodeTables } from "./components/tables/NodeTables";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,8 +27,6 @@ function App() {
   }));
   const methods = useForm<{ node_type: NODE_TYPE }>();
   const selectedNode = methods.watch("node_type", items[0].value);
-
-  useGetNodes(selectedNode).then((value) => console.log(value));
 
   // useEffect(() => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -89,6 +87,7 @@ function App() {
         <CreateNodeDialogForCreditCard />
         <CreateNodeDialogForTransaction />
       </Flex>
+      <NodeTables nodeType={selectedNode} />
     </Theme>
   );
 }

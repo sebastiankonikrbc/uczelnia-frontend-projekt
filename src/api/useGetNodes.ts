@@ -17,7 +17,8 @@ export type NODES_TYPES =
   | IP_ADDRESS_NODE[]
   | LOCATION_NODE[]
   | TRANSACTION_TYPE_NODE[]
-  | USER_NODE[];
+  | USER_NODE[]
+  | TRANSACTION_NODE[];
 
 export const useGetNodes = async (
   nodeType: NODE_TYPE
