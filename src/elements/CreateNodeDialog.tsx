@@ -1,6 +1,14 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { Dialog } from "../components/Dialog";
-import { CreateNodeForm } from "../components/forms/CreateNodeForm";
+import {
+  CreateCreditCardNodeForm,
+  CreateFraudReportNodeForm,
+  CreateIpAddressNodeForm,
+  CreateLocationNodeForm,
+  CreateTransactionNodeForm,
+  CreateTransactionTypeNodeForm,
+  CreateUserNodeForm,
+} from "../components/forms/CreateNodeForm";
 import {
   CREDIT_CARD,
   FRAUD_REPORT,
@@ -33,7 +41,7 @@ export const CreateNodeDialogForUser = () => {
         }
         onClickSave={onClickSave}
       >
-        <CreateNodeForm />
+        <CreateUserNodeForm />
       </Dialog>
     </FormProvider>
   );
@@ -58,7 +66,7 @@ export const CreateNodeDialogForTransactionType = () => {
         }
         onClickSave={onClickSave}
       >
-        <CreateNodeForm />
+        <CreateTransactionTypeNodeForm />
       </Dialog>
     </FormProvider>
   );
@@ -83,7 +91,7 @@ export const CreateNodeDialogForLocation = () => {
         }
         onClickSave={onClickSave}
       >
-        <CreateNodeForm />
+        <CreateLocationNodeForm />
       </Dialog>
     </FormProvider>
   );
@@ -108,7 +116,7 @@ export const CreateNodeDialogForIpAddress = () => {
         }
         onClickSave={onClickSave}
       >
-        <CreateNodeForm />
+        <CreateIpAddressNodeForm />
       </Dialog>
     </FormProvider>
   );
@@ -132,7 +140,7 @@ export const CreateNodeDialogForFraudReport = () => {
         }
         onClickSave={onClickSave}
       >
-        <CreateNodeForm />
+        <CreateFraudReportNodeForm />
       </Dialog>
     </FormProvider>
   );
@@ -160,7 +168,7 @@ export const CreateNodeDialogForCreditCard = () => {
         }
         onClickSave={onClickSave}
       >
-        <CreateNodeForm />
+        <CreateCreditCardNodeForm />
       </Dialog>
     </FormProvider>
   );
@@ -185,7 +193,7 @@ export const CreateNodeDialogForTransaction = () => {
         }
         onClickSave={onClickSave}
       >
-        <CreateNodeForm />
+        <CreateTransactionNodeForm />
       </Dialog>
     </FormProvider>
   );
