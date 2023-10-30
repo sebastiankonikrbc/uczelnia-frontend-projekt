@@ -5,11 +5,19 @@ import "./App.css";
 import "@radix-ui/themes/styles.css";
 
 import { Select } from "./components/Select";
-import { Theme } from "@radix-ui/themes";
+import { Flex, Theme } from "@radix-ui/themes";
 import { NODE_TYPES_ARRAY, NODE_TYPE } from "./api/types";
 import { FormProvider, useForm } from "react-hook-form";
 import { useGetNodes } from "./api/useGetNodes";
-import { CreateNodeDialog } from "./elements/CreateNodeDialog";
+import {
+  CreateNodeDialogForCreditCard,
+  CreateNodeDialogForFraudReport,
+  CreateNodeDialogForIpAddress,
+  CreateNodeDialogForLocation,
+  CreateNodeDialogForTransaction,
+  CreateNodeDialogForTransactionType,
+  CreateNodeDialogForUser,
+} from "./elements/CreateNodeDialog";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -72,7 +80,15 @@ function App() {
           }))}
         />
       </FormProvider>
-      <CreateNodeDialog />
+      <Flex direction="column" gap="3">
+        <CreateNodeDialogForUser />
+        <CreateNodeDialogForTransactionType />
+        <CreateNodeDialogForLocation />
+        <CreateNodeDialogForIpAddress />
+        <CreateNodeDialogForFraudReport />
+        <CreateNodeDialogForCreditCard />
+        <CreateNodeDialogForTransaction />
+      </Flex>
     </Theme>
   );
 }
