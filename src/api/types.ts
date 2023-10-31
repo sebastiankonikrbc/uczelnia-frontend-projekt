@@ -29,6 +29,7 @@ export type RELATIONSHIP_TYPES = (typeof RELATIONSHIPS)[number];
 export type NODE = {
   node_id: string;
 };
+
 export type TRANSACTION_NODE = {
   amount: number;
   timestamp: string;

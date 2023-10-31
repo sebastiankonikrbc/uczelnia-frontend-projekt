@@ -1,21 +1,26 @@
 import { useContext, useEffect, useState } from "react";
 import { NODE_TYPE } from "../../api/types";
 import { NODES_TYPES, useGetNodes } from "../../api/useGetNodes";
-import { Flex, Table } from "@radix-ui/themes";
+import { Button, Flex, Table } from "@radix-ui/themes";
 import { CircleBackslashIcon, Pencil2Icon } from "@radix-ui/react-icons";
 import { getCreateDialog } from "../../elements/utils";
 import { RefetchContext } from "../../RefetchContext";
+import { useDeleteNode } from "../../api/useDeleteNode";
 
 export const NodeTables = ({ nodeType }: { nodeType: NODE_TYPE }) => {
   const [nodes, setNodes] = useState<NODES_TYPES>([]);
-  const { refetch } = useContext(RefetchContext);
+  const { refetch, setRefetch } = useContext(RefetchContext);
 
   useEffect(() => {
-    console.log(refetch, "cze");
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useGetNodes(nodeType).then((value) => setNodes(value ?? []));
   }, [nodeType, refetch]);
 
+  const deleteNode = async (nodeType: NODE_TYPE, nodeId: string) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    await useDeleteNode(nodeType, nodeId);
+    setRefetch((prev) => prev + 1);
+  };
   const CreateDialog = () => getCreateDialog(nodeType);
   return (
     <Table.Root>
@@ -37,7 +42,7 @@ export const NodeTables = ({ nodeType }: { nodeType: NODE_TYPE }) => {
         {nodes.length > 0 &&
           nodes?.map((value, indx) => (
             <Table.Row key={indx}>
-              {Object.values(value ?? {})?.map((val, inx) => {
+              {Object.values(value)?.map((val, inx) => {
                 if (typeof val === "object")
                   return (
                     <Table.Cell key={inx}>
@@ -53,7 +58,12 @@ export const NodeTables = ({ nodeType }: { nodeType: NODE_TYPE }) => {
               })}
               <Table.Cell>
                 <Flex gap="2" justify="center">
-                  <CircleBackslashIcon color="red" />
+                  <Button
+                    variant="ghost"
+                    onClick={() => deleteNode(nodeType, value["node_id"])}
+                  >
+                    <CircleBackslashIcon color="red" />
+                  </Button>
                   <CreateDialog />
                   <Pencil2Icon />
                 </Flex>
