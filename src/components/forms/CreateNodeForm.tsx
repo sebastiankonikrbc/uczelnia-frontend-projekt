@@ -9,9 +9,13 @@ import {
   TRANSACTION_TYPE,
   USER,
 } from "../../api/types";
+import { useEffect } from "react";
 
 export const CreateUserNodeForm = () => {
-  const { register } = useFormContext<USER>();
+  const { register, reset } = useFormContext<USER>();
+  useEffect(() => {
+    reset();
+  }, []);
   return (
     <>
       <label>

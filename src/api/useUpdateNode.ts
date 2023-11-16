@@ -7,7 +7,7 @@ export const useUpdateNode = async (
   nodeData: CreateInputType
 ) => {
   const response = await fetch(`${API_EDIT_NODE}/${nodeType}/${nodeId}`, {
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify({ ...nodeData }),
   });
   return response;
