@@ -5,7 +5,15 @@ type Item = {
   label: string;
   value: string;
 };
-export const Select = ({ items, name }: { items: Item[]; name: string }) => {
+export const Select = ({
+  items,
+  name,
+  placeholder,
+}: {
+  items: Item[];
+  name: string;
+  placeholder?: string;
+}) => {
   const { control } = useFormContext();
   return (
     <Controller
@@ -17,7 +25,11 @@ export const Select = ({ items, name }: { items: Item[]; name: string }) => {
           <RadixSelect.Content>
             <RadixSelect.Group>
               {items.map(({ value, label }) => (
-                <RadixSelect.Item key={`key_${value}_${label}`} value={value}>
+                <RadixSelect.Item
+                  key={`key_${value}_${label}`}
+                  value={value}
+                  placeholder={placeholder}
+                >
                   {label}
                 </RadixSelect.Item>
               ))}

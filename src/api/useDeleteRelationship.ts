@@ -1,4 +1,4 @@
-import { API_DELETE_NODE } from "./constants";
+import { API_DELETE_RELATIONSHIP } from "./constants";
 import { NODE_TYPE, RELATIONSHIP_TYPES } from "./types";
 
 export const useDeleteRelationship = async (
@@ -9,7 +9,7 @@ export const useDeleteRelationship = async (
   targetType: NODE_TYPE
 ) => {
   const response = await fetch(
-    `${API_DELETE_NODE}/${relationshipType}/${sourceId}/${targetId}/${sourceType}/${targetType}`,
+    `${API_DELETE_RELATIONSHIP}/${relationshipType}/${sourceId}/${targetId}/${sourceType}/${targetType}`,
     {
       method: "DELETE",
     }

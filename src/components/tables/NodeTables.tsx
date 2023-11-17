@@ -10,12 +10,14 @@ import React from "react";
 
 export const NodeTables = ({ nodeType }: { nodeType: NODE_TYPE }) => {
   const [nodes, setNodes] = useState<NODES_TYPES>([]);
-  const { refetch, setRefetch } = useContext(RefetchContext);
+  const { refetch, setRefetch, nodeTypeToRefetch } = useContext(RefetchContext);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useGetNodes(nodeType).then((value) => setNodes(value ?? []));
-  }, [nodeType, refetch]);
+    useGetNodes(nodeType ?? nodeTypeToRefetch).then((value) =>
+      setNodes(value ?? [])
+    );
+  }, [nodeType, refetch, nodeTypeToRefetch]);
 
   const deleteNode = async (nodeType: NODE_TYPE, nodeId: string) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
