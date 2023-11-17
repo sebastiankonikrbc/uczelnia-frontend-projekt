@@ -7,6 +7,7 @@ import { getCreateDialog, getEditDialog } from "../../elements/utils";
 import { RefetchContext } from "../../RefetchContext";
 import { useDeleteNode } from "../../api/useDeleteNode";
 import React from "react";
+import { toast } from "react-toastify";
 
 export const NodeTables = ({ nodeType }: { nodeType: NODE_TYPE }) => {
   const [nodes, setNodes] = useState<NODES_TYPES>([]);
@@ -22,6 +23,17 @@ export const NodeTables = ({ nodeType }: { nodeType: NODE_TYPE }) => {
   const deleteNode = async (nodeType: NODE_TYPE, nodeId: string) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useDeleteNode(nodeType, nodeId);
+    toast.success("Successfully deleted node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     setRefetch((prev) => prev + 1);
   };
   const CreateDialog = () => getCreateDialog(nodeType);

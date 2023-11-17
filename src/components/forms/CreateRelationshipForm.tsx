@@ -13,6 +13,7 @@ import { Button } from "@radix-ui/themes";
 import { RefetchContext } from "../../RefetchContext";
 import { useCreateRelationship } from "../../api/useCreateRelationship";
 import { useDeleteRelationship } from "../../api/useDeleteRelationship";
+import { toast } from "react-toastify";
 
 const getPossibleNodes = (
   relationshipType: RELATIONSHIP_TYPES
@@ -75,6 +76,16 @@ export const CreateRelationhipForm = ({
       values.source_type,
       values.target_type
     );
+    toast.success("Successfully deleted relationship", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     setNodeTypeToRefetch(values.source);
     setNodeTypeToRefetch(values.target);
     methods.reset({
@@ -99,6 +110,16 @@ export const CreateRelationhipForm = ({
     await useCreateRelationship({ ...values, type: relationshipType });
     setNodeTypeToRefetch(values.source);
     setNodeTypeToRefetch(values.target);
+    toast.success("Successfully created relationship", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
 
     methods.reset({
       source_type: "",

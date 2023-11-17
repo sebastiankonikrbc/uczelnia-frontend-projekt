@@ -21,6 +21,7 @@ import {
 import { useCreateNode } from "../api/useCreateNode";
 import { useContext } from "react";
 import { RefetchContext } from "../RefetchContext";
+import { toast } from "react-toastify";
 
 export const CreateNodeDialogForUser = ({
   Trigger,
@@ -37,6 +38,17 @@ export const CreateNodeDialogForUser = ({
       { name: "", email: "", age: undefined, address: "" },
       { keepValues: false }
     );
+    toast.success("Successfully created node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     setRefetch((prev: number) => prev + 1);
   };
   return (
@@ -63,6 +75,17 @@ export const CreateNodeDialogForTransactionType = () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "TransactionType" });
+    toast.success("Successfully created node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     methods.reset({ name: "", description: "" }, { keepValues: false });
     setRefetch((prev: number) => prev + 1);
   };
@@ -89,6 +112,16 @@ export const CreateNodeDialogForLocation = () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "Location" });
+    toast.success("Successfully created node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     methods.reset({ latitude: 0, longitude: 0 }, { keepValues: false });
     setRefetch((prev: number) => prev + 1);
   };
@@ -115,6 +148,16 @@ export const CreateNodeDialogForIpAddress = () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "IPAddress" });
+    toast.success("Successfully created node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     methods.reset({ ip_address: "" }, { keepValues: false });
     setRefetch((prev: number) => prev + 1);
   };
@@ -140,6 +183,16 @@ export const CreateNodeDialogForFraudReport = () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "FraudReport" });
+    toast.success("Successfully created node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     methods.reset({ description: "" }, { keepValues: false });
     setRefetch((prev: number) => prev + 1);
   };
@@ -166,6 +219,16 @@ export const CreateNodeDialogForCreditCard = () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "CreditCard" });
+    toast.success("Successfully created node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     methods.reset(
       { card_number: "", expiration_date: "", cvv: "string" },
       { keepValues: false }
@@ -195,6 +258,16 @@ export const CreateNodeDialogForTransaction = () => {
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useCreateNode({ ...value, type: "Transaction" });
+    toast.success("Successfully created node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     methods.reset({ amount: 0, timestamp: "" }, { keepValues: false });
     setRefetch((prev: number) => prev + 1);
   };

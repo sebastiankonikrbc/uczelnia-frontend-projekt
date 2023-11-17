@@ -4,6 +4,9 @@ import "@radix-ui/themes/styles.css";
 
 import { Select } from "./components/Select";
 import { Theme } from "@radix-ui/themes";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
 import {
   NODE_TYPES_ARRAY,
   NODE_TYPE,
@@ -81,6 +84,7 @@ function App() {
           </FormProvider>
           <CreateRelationhipForm relationshipType={selectedRelationship} />
         </div>
+        <ToastContainer />
       </RefetchContextProvider>
     </Theme>
   );

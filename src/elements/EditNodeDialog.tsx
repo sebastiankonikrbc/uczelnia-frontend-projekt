@@ -22,6 +22,7 @@ import { useUpdateNode } from "../api/useUpdateNode";
 import { useContext, useEffect } from "react";
 import { RefetchContext } from "../RefetchContext";
 import { Pencil2Icon } from "@radix-ui/react-icons";
+import { toast } from "react-toastify";
 
 export const EditNodeDialogForUser = ({
   Trigger = () => <Pencil2Icon />,
@@ -40,6 +41,17 @@ export const EditNodeDialogForUser = ({
     await useUpdateNode("User", defaultValues.node_id, {
       ...value,
     });
+    toast.success("Successfully edited node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     methods.reset(
       { name: "", email: "", age: null, address: "" },
       { keepValues: false }
@@ -80,6 +92,17 @@ export const EditNodeDialogForTransactionType = ({
     await useUpdateNode("TransactionType", defaultValues.node_id, {
       ...value,
     });
+    toast.success("Successfully edited node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     methods.reset({ name: "", description: "" }, { keepValues: false });
     setRefetch((prev: number) => prev + 1);
   };
@@ -115,6 +138,17 @@ export const EditNodeDialogForLocation = ({
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useUpdateNode("Location", defaultValues.node_id, { ...value });
+    toast.success("Successfully edited node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     methods.reset({ latitude: 0, longitude: 0 }, { keepValues: false });
     setRefetch((prev: number) => prev + 1);
   };
@@ -150,6 +184,17 @@ export const EditNodeDialogForIpAddress = ({
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useUpdateNode("IPAddress", defaultValues.node_id, { ...value });
+    toast.success("Successfully edited node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     methods.reset({ ip_address: "" }, { keepValues: false });
     setRefetch((prev: number) => prev + 1);
   };
@@ -183,6 +228,17 @@ export const EditNodeDialogForFraudReport = ({
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useUpdateNode("FraudReport", defaultValues.node_id, { ...value });
+    toast.success("Successfully edited node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     methods.reset({ description: "" }, { keepValues: false });
     setRefetch((prev: number) => prev + 1);
   };
@@ -217,6 +273,17 @@ export const EditNodeDialogForCreditCard = ({
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useUpdateNode("CreditCard", defaultValues.node_id, { ...value });
+    toast.success("Successfully edited node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     methods.reset(
       { card_number: "", expiration_date: "", cvv: "string" },
       { keepValues: false }
@@ -254,6 +321,16 @@ export const EditNodeDialogForTransaction = ({
     const value = methods.getValues();
     // eslint-disable-next-line react-hooks/rules-of-hooks
     await useUpdateNode("Transaction", defaultValues.node_id, { ...value });
+    toast.success("Successfully edited node", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     methods.reset({ amount: 0, timestamp: "" }, { keepValues: false });
     setRefetch((prev: number) => prev + 1);
   };
