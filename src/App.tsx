@@ -17,7 +17,19 @@ import { FormProvider, useForm } from "react-hook-form";
 import { NodeTables } from "./components/tables/NodeTables";
 import { RefetchContextProvider } from "./RefetchContext";
 import { CreateRelationhipForm } from "./components/forms/CreateRelationshipForm";
+import { DataVizualization } from "./components/DataVisualization";
+import { useEffect, useState } from "react";
+import { useGetNodes } from "./api/useGetNodes";
 
+type Node = {
+  type: string;
+  id: string;
+};
+type Link = {
+  type: string;
+  source: string;
+  target: string;
+};
 function App() {
   const items = NODE_TYPES_ARRAY.map((value) => ({
     value: value,
@@ -30,19 +42,9 @@ function App() {
     relationship_type: RELATIONSHIP_TYPES;
   }>();
   const selectedRelationship = relationshipMethods.watch("relationship_type");
-
-  // useEffect(() => {
-  // useCreateRelationship({
-  //   source_type: "Transaction",
-  //   source: "75039549-0e7d-46d5-8eda-ecb85ce1e6af",
-  //   type: "IS_OF_TYPE",
-  //   target: "2061c67c-9f22-4907-925d-4e84b97b6195",
-  //   target_type: "TransactionType",
-  // });
-  // }, []);
-
   return (
     <Theme>
+      <DataVizualization />
       <RefetchContextProvider>
         <div>
           <a href="https://react.dev" target="_blank">
