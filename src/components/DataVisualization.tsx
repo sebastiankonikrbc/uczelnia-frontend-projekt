@@ -59,7 +59,7 @@ export const DataVizualization = () => {
           }
         });
       });
-      setTimeout(() => setFinish(true), 2000);
+      setTimeout(() => setFinish(true), 8000);
     };
     cze();
   }, [refetch]);
